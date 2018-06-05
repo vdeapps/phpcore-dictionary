@@ -1,7 +1,8 @@
 <?php
 /**
- * Copyright AUXITEC TECHNOLOGIES (groupe Artélia)
+ * Copyright (c) vdeApps 2018
  */
+
 
 /**
  * Class de traduction clé/valeur

@@ -1,0 +1,51 @@
+{
+    "name": "vdeapps/phpcore-dictionary",
+    "type": "library",
+    "description": "Simple dictionary name => value for translate",
+    "keywords": [
+        "vdeapps",
+        "library",
+        "array",
+        "dictionary"
+    ],
+    "homepage": "https://github.com/vdeapps/phpcore-dictionary",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "vdeApps",
+            "email": "vdeapps@riseup.net",
+            "homepage": "https://github.com/vdeapps/phpcore-dictionary",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "email": "vdeapps@riseup.net",
+        "issues": "https://github.com/vdeapps/phpcore-dictionary/issues"
+    },
+    "config": {
+        "platform": {
+            "php": "7.0.00"
+        }
+    },
+    "require": {
+        "php": ">=5.5.9"
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "3.*"
+    },
+    "suggest": {
+    },
+    "autoload": {
+        "psr-4": {
+            "vdeApps\\phpCore\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "": "tests/"
+        }
+    },
+    "scripts": {
+        "cs-fix": "php-cs-fixer fix . --fixers=-psr0"
+    }
+}

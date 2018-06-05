@@ -5,8 +5,8 @@
 
 
 /**
- * Class de traduction clé/valeur
- * @author deverre
+ * Class Dictionary
+ * @author vdeapps
  * @version
  */
 
@@ -19,12 +19,13 @@ namespace vdeApps\phpCore\Dictionary;
 class Dictionary implements DictionaryInterface
 {
     /** @var array */
-    private $dictionary;
-    
+    private $dictionary = [];
+
     /**
      * Dictionary constructor.
      *
      * @param array|DictionaryInterface $arr
+     * @throws \Exception
      */
     public function __construct($arr = [])
     {
@@ -37,13 +38,14 @@ class Dictionary implements DictionaryInterface
     public function getDictionary()
     {
         
-        return $this->dictionnary;
+        return $this->dictionary;
     }
-    
+
     /**
      * @param array|DictionaryInterface $arr
      *
      * @return $this
+     * @throws \Exception
      */
     public function setDictionary($arr = [])
     {
@@ -89,18 +91,22 @@ class Dictionary implements DictionaryInterface
             return false;
         }
     }
-    
+
     /** Merge with array or Dictionary
      *
      * @param array|DictionaryInterface $arr
      *
      * @return $this
+     * @throws \Exception
      */
     public function append($arr)
     {
         
         if (is_a($arr, DictionaryInterface::class)) {
             $arr = $arr->getDictionary();
+        }
+        elseif (false === is_array($arr)){
+            throw new \Exception("Not an array", 5);
         }
         
         foreach ($arr as $key => $val) {
@@ -122,13 +128,15 @@ class Dictionary implements DictionaryInterface
     {
         return array_keys($this->dictionary);
     }
-    
+
     /**
      * Return instanceof Dictionary
+     * @param array $arr
      * @return DictionaryInterface
+     * @throws \Exception
      */
-    public static function getInstance()
+    public static function getInstance($arr = [])
     {
-        return new self();
+        return new self($arr);
     }
 }

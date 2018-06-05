@@ -50,12 +50,13 @@ interface DictionaryInterface
      * @return array
      */
     public function getKeys();
-    
+
     /**
      * Return instanceof Dictionary
+     * @param array $arr
      * @return DictionaryInterface
      */
-    public static function getInstance();
+    public static function getInstance($arr = []);
     
     /**
      * Clear all data

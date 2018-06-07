@@ -62,4 +62,14 @@ interface DictionaryInterface
      * Clear all data
      */
     public function clear();
+    
+    /**
+     * Traduit une liste de code par son libelle
+     *
+     * @param array $arrayKeys 0 indexed
+     * @param DictionaryInterface $dictionary
+     *
+     * @return array
+     */
+    public function translate($arrayKeys = []);
 }

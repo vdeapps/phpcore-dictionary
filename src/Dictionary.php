@@ -9,7 +9,6 @@
  * @author vdeapps
  * @version
  */
-
 namespace vdeApps\phpCore\Dictionary;
 
 /**
@@ -138,5 +137,30 @@ class Dictionary implements DictionaryInterface
     public static function getInstance($arr = [])
     {
         return new self($arr);
+    }
+    
+    /**
+     * Translate arrayKeys values with Dictionary
+     *
+     * @param array $arrayKeys 0 indexed
+     *
+     * @return array
+     */
+    public function translate($arrayKeys = []) {
+        $result = [];
+        
+        // Transposition pour les libelles
+        foreach ($arrayKeys as $key => $value) {
+            
+            // Indexed numeric array
+            if (is_numeric($key)){
+                $fromDictionnary = $this->getString($value);
+                $result[] = (false === $fromDictionnary) ?  ucwords($value) : $fromDictionnary;
+            }
+            else{
+                $result[] = $value;
+            }
+        }
+        return $result;
     }
 }

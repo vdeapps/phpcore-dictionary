@@ -22,6 +22,12 @@ class DictionaryTest extends TestCase
         'AAAA'=>'aaaa',
         'BBBB'=>'bbbb',
     ];
+    
+    protected $exportFields = [
+        'prenom',
+        'pays' => 'Country Custom',
+        'autre'
+    ];
 
     public function testConstruct()
     {
@@ -71,14 +77,20 @@ class DictionaryTest extends TestCase
 
         $this->assertEquals(false, $o->getString('Fake Key'));
 
-        $o = Dictionary::getInstance($this->dic);
+        $o = Dictionary::getInstance($this->appendDic);
         $o->append([
             'AAAA'=>'aaaa',
             'BBBB'=>'bbbb',
         ]);
 
         $this->assertEquals($this->appendDic, $o->getDictionary());
-
+        
         print_r($o->getDictionary());
+    
+        print_r($this->exportFields);
+        
+        $arrTranslated = $o->translate($this->exportFields);
+        
+        print_r($arrTranslated);
     }
 }
